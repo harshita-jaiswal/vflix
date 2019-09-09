@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Header from './components/Header';
+import List from './components/List';
 
-function App() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<p>vFlix</p>
-				<input placeholder="Search" />
-			</header>
-		</div>
-	);
+export default class App extends Component {
+	render() {
+		return (
+			<div className="App">
+				<header>
+					<Header />
+				</header>
+				<List />
+			</div>
+		);
+	}
 }
-
-export default App;

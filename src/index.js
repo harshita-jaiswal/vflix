@@ -24,6 +24,6 @@ ReactDOM.render(
 store.dispatch(TYPE.setVideoList());
 
 // store.dispatch(TYPE.setSearchKey(''));
+console.log('store--', store.getState());
 // store.dispatch(TYPE.getSearchVideoList());
-// console.log('store--', store.getState());
 serviceWorker.unregister();
