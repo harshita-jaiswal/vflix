@@ -1,14 +1,15 @@
 .App {
 	max-width: 1440px;
 	margin: 0 auto;
-	padding: 30px;
 	background: #252835;
 	height: 100vh;
+	overflow: auto;
 }
 
 .App-header {
 	@include flex($justify: space-between);
 	font-size: calc(10px + 2vmin);
+	padding: 30px;
 	color: red;
 	.title {
 		font-size: 2rem;
@@ -44,12 +45,37 @@
 
 .search-info {
 	font-size: 16px;
+	padding: 0 30px 20px;
 	@include flex($justify: space-between);
 	.clear {
 		cursor: pointer;
 		opacity: 0.8;
 		&:hover {
 			opacity: 1;
+			text-decoration: underline;
 		}
+	}
+}
+
+.list {
+	@include flex($wrap: wrap, $justify: flex-start);
+}
+
+.card {
+	cursor: pointer;
+	border: 1px solid #e5e5e5;
+	@include flex($align: flex-start);
+	margin: 20px 30px;
+	flex: 1 0 30%;
+	max-width: 410px;
+	height: 300px;
+	&_img {
+		max-height: 300px;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	&_info {
+		padding: 10px 20px;
 	}
 }

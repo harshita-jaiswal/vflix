@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSearchVideoList, setSearchKey } from '../store/actions';
+import { getSearchVideoList, setSearchKey } from 'store/actions';
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -51,4 +51,4 @@ export class Header extends Component {
 	}
 }
 
-export default connect(mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);

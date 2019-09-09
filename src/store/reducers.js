@@ -8,7 +8,6 @@ const initialState = {
 };
 
 export default function video(state, actions) {
-	console.log('test');
 	if (actions.type === undefined) {
 		return initialState;
 	}
