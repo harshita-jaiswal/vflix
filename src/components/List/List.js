@@ -4,10 +4,10 @@ import { getSearchVideoList, setSearchKey } from 'store/actions';
 import ListItem from './components/ListItem';
 
 const mapStateToProps = (state) => ({
-	list: state && state.list,
-	searchKey: state && state.searchKey,
-	searchList: state && state.searchList,
-	finalList: state && state.searchKey && state.searchKey.length ? state && state.searchList : state && state.list
+	list: state.list,
+	searchKey: state.searchKey,
+	searchList: state.searchList,
+	finalList: state.searchKey && state.searchKey.length ? state.searchList : state.list
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -41,10 +41,15 @@ export class List extends Component {
 					''
 				)}
 				<div className="list">
-					{this.props.finalList &&
+					{this.props.finalList.length ? (
 						this.props.finalList.map((item, index) => {
 							return <ListItem info={item} key={index} />;
-						})}
+						})
+					) : (
+						<p className="no-res">
+							Oops!! No Result.<span>😔</span>
+						</p>
+					)}
 				</div>
 			</div>
 		);
