@@ -14,7 +14,7 @@ class Detail extends Component {
 	}
 
 	componentDidMount() {
-		fetch(`http://www.omdbapi.com/?apikey=dbdb427f&i=${this.props.selectedVideoInfo.imdbID}`)
+		fetch(`https://www.omdbapi.com/?apikey=dbdb427f&i=${this.props.selectedVideoInfo.imdbID}`)
 			.then((response) => {
 				if (response.status !== 200) {
 					console.log('Looks like there was a problem. Status Code: ' + response.status);
