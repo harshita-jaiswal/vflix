@@ -20,18 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 export class List extends Component {
 	constructor(props) {
 		super(props);
-		this.info = {
-			description:
-				'A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.',
-			imdbID: 'tt1856010',
-			poster: 'hoc.jpg',
-			title: 'House of Cards',
-			trailer: 'NTzycsqxYJ0',
-			year: '2013–'
-		};
-		this.state = {
-			videoList: []
-		};
 		this.removeSearch = this.removeSearch.bind(this);
 	}
 
@@ -54,8 +42,8 @@ export class List extends Component {
 				)}
 				<div className="list">
 					{this.props.finalList &&
-						this.props.finalList.map((item) => {
-							return <ListItem info={item} />;
+						this.props.finalList.map((item, index) => {
+							return <ListItem info={item} key={index} />;
 						})}
 				</div>
 			</div>

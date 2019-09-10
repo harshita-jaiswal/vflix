@@ -4,13 +4,12 @@ import { videoInfo } from './data';
 const initialState = {
 	list: [],
 	searchList: [],
-	searchKey: ''
+	searchKey: '',
+	detailView: false,
+	selectedVideoInfo: null
 };
 
-export default function video(state, actions) {
-	if (actions.type === undefined) {
-		return initialState;
-	}
+export default function video(state = initialState, actions) {
 	switch (actions.type) {
 		case TYPE.SET_LIST:
 			return Object.assign({}, state, { list: videoInfo.shows });
@@ -19,6 +18,10 @@ export default function video(state, actions) {
 			return Object.assign({}, state, { searchList: searchList });
 		case TYPE.SET_SEARCH_KEY:
 			return Object.assign({}, state, { searchKey: actions.key });
+		case TYPE.SHOW_DETAIL:
+			return Object.assign({}, state, { detailView: actions.key });
+		case TYPE.SELECT_VIDEO_INFO:
+			return Object.assign({}, state, { selectedVideoInfo: actions.key });
 		default:
 			return state;
 	}

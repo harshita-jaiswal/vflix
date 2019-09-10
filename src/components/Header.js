@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSearchVideoList, setSearchKey } from 'store/actions';
+import { getSearchVideoList, setSearchKey, showDetailView } from 'store/actions';
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		setSearchKey: (searchKey) => dispatch(setSearchKey(searchKey)),
-		getSearchVideoList: () => dispatch(getSearchVideoList())
+		getSearchVideoList: () => dispatch(getSearchVideoList()),
+		showDetailView: (status) => dispatch(showDetailView(status))
 	};
 };
+
+const mapStateToProps = (state) => ({
+	detailView: state && state.detailView
+});
 
 export class Header extends Component {
 	constructor(props) {
@@ -36,19 +41,25 @@ export class Header extends Component {
 
 	render() {
 		return (
-			<div className="App-header">
+			<header className="App-header">
 				<p className="title">vFlix</p>
-				<input
-					placeholder="Search"
-					className="search"
-					onChange={this.handleUserInput}
-					value={this.state.searchKey}
-					onKeyUp={this.submit}
-					type="text"
-				/>
-			</div>
+				{!this.props.detailView ? (
+					<input
+						placeholder="Search"
+						className="search"
+						onChange={this.handleUserInput}
+						value={this.state.searchKey}
+						onKeyUp={this.submit}
+						type="text"
+					/>
+				) : (
+					<span onClick={() => this.props.showDetailView(false)} className="back-btn">
+						Back
+					</span>
+				)}
+			</header>
 		);
 	}
 }
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
